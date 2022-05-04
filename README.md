@@ -1,4 +1,5 @@
 # Account management service.
 
-Database Schema
+Database Schema.
+
 ![](./md/UserDomainApi.jpg)
