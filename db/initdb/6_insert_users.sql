@@ -1,0 +1,6 @@
+INSERT INTO "user"
+VALUES (
+  '96c1052d-9769-4620-ad67-2c69816cddbb',
+  'admin',
+  '$2y$08$YYnT5DDQ.NLIlgV.s9d1t.YZHwyc7I.CZuTyt0HDE1E84Q5Ux3dsK'
+);
