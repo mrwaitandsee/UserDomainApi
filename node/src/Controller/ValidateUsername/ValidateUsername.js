@@ -1,5 +1,5 @@
 import BaseController from '../../Core/BaseController';
-import { ValidateUsernameService } from "../../Service/ValidateUsername/ValidateUsername";
+import { ValidateUsernameService } from "../../Service/ValidateUsernameService/ValidateUsernameService";
 
 const method = 'POST';
 const action = 'user-management/validate-username';

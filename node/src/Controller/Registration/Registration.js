@@ -1,7 +1,7 @@
 import BaseController from '../../Core/BaseController';
 import Configuration from '../../Configuration/Configuration';
 import { transaction } from '../../Core/Transaction';
-import { ValidateUsernameService } from "../../Service/ValidateUsername/ValidateUsername";
+import { ValidateUsernameService } from "../../Service/ValidateUsernameService/ValidateUsernameService";
 import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 
@@ -33,11 +33,11 @@ export class Registration extends BaseController {
         return;
       }
 
-      const dbClient = Configuration.getDBClient();
-      await dbClient.connect();
+      const dbClient = await Configuration.getDBClient();
       const projects = await dbClient.query('SELECT * FROM \"project\" WHERE name IN ($1)', [project.join()])
-      await dbClient.end();
-      transaction(Configuration.getDBClient(), async (client) => {
+      await dbClient.release();
+      const dbClient4Transaction = await Configuration.getDBClient()
+      transaction(dbClient4Transaction, async (client) => {
         const hash = await bcrypt.hash(password, Configuration.getBcryptSaltRounds());
         const newUser = {
           id: crypto.randomUUID(),
