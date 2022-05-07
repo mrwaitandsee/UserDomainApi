@@ -1,0 +1,10 @@
+
+server:
+  port: 5000
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://172.20.0.2:5432/user-domain-api
+    username: postgres
+    password: strong-password
