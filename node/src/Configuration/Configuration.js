@@ -10,7 +10,7 @@ export default class Configuration {
   static async getDBClient() {
     if (!this.dbPool) {
       this.dbPool = new Pool({
-        host: process.env.DB_HOST || '172.31.0.2',
+        host: process.env.DB_HOST || '172.20.0.2',
         port: process.env.DB_PORT || 5432,
         user: process.env.DB_USER || 'postgres',
         password: process.env.DB_PASSWORD || 'strong-password',
