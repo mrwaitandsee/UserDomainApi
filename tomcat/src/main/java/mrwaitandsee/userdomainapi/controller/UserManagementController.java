@@ -1,14 +1,10 @@
 package mrwaitandsee.userdomainapi.controller;
 
-import mrwaitandsee.userdomainapi.dto.LoginRequestDto;
-import mrwaitandsee.userdomainapi.dto.RegistrationRequestDto;
-import mrwaitandsee.userdomainapi.dto.ValidateUsernameRequestDto;
-import mrwaitandsee.userdomainapi.dto.ValidateUsernameResponseDto;
+import mrwaitandsee.userdomainapi.dto.*;
 import mrwaitandsee.userdomainapi.service.UserManagementService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,9 +27,10 @@ public class UserManagementController {
 
     }
 
+    @Transactional
     @PostMapping("/registration")
-    public void registration(@RequestBody RegistrationRequestDto body) {
-
+    public ResponseEntity<RegistrationResponseDto> registration(@Valid @RequestBody RegistrationRequestDto body) {
+        return ResponseEntity.ok(new RegistrationResponseDto(true, userManagementService.registration(body)));
     }
 
     @PostMapping("validate-username")
