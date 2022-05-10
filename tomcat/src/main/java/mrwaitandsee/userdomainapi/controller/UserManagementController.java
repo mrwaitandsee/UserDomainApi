@@ -23,8 +23,8 @@ public class UserManagementController {
     }
 
     @PostMapping("/login")
-    public void login(@RequestBody LoginRequestDto body) {
-
+    public ResponseEntity<LoginResponseDto> login(@RequestBody LoginRequestDto body) {
+        return ResponseEntity.ok(new LoginResponseDto(true, userManagementService.login(body)));
     }
 
     @Transactional
@@ -35,7 +35,6 @@ public class UserManagementController {
 
     @PostMapping("validate-username")
     public ResponseEntity<ValidateUsernameResponseDto> validateUsername(@Valid @RequestBody ValidateUsernameRequestDto body) {
-        Boolean isValid = userManagementService.validateUsername(body.getName());
-        return ResponseEntity.ok(new ValidateUsernameResponseDto(true, isValid));
+        return ResponseEntity.ok(new ValidateUsernameResponseDto(true, userManagementService.validateUsername(body.getName())));
     }
 }

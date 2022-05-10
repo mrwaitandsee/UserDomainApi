@@ -9,6 +9,9 @@ spring:
     username: postgres
     password: strong-password
 
+jwt:
+  secret: strong-secret
+
 logging:
   level:
     org.springframework.jdbc.core.JdbcTemplate: DEBUG
