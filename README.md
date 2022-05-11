@@ -132,6 +132,18 @@ docker run \
 node-app:latest
 ```
 
+## Run container with tomcat-app
+
+```
+docker run \
+-p 5000:5000 \
+--net=commonet \
+--name=tomcat-app \
+--cpuset-cpus='3' \
+--memory='1024m' \
+tomcat-app:latest
+```
+
 # Load testing results
 
 ## Node
@@ -319,3 +331,51 @@ Loop count: 10
 
 ![](./md/a-node-4.4.png)
 ![](./md/b-node-4.4.png)
+
+## tomcat
+
+### TOMCAT / POST /api/user-management/registration
+
+## Test 1
+
+Number of Threads (users): 100
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-1.1.png)
+![](./md/b-tomcat-1.1.png)
+
+## Test 2
+
+Number of Threads (users): 300
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-1.2.png)
+![](./md/b-tomcat-1.2.png)
+
+## Test 3
+
+Number of Threads (users): 500
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-1.3.png)
+![](./md/b-tomcat-1.3.png)
+
+## Test 4
+
+Number of Threads (users): 1000
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-1.4.png)
+![](./md/b-tomcat-1.4.png)
