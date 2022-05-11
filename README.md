@@ -425,3 +425,95 @@ Loop count: 10
 
 ![](./md/a-tomcat-2.4.png)
 ![](./md/b-tomcat-2.4.png)
+
+### TOMCAT / POST /api/user-management/login
+
+## Test 1
+
+Number of Threads (users): 100
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-3.1.png)
+![](./md/b-tomcat-3.1.png)
+
+## Test 2
+
+Number of Threads (users): 300
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-3.2.png)
+![](./md/b-tomcat-3.2.png)
+
+## Test 3
+
+Number of Threads (users): 500
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-3.3.png)
+![](./md/b-tomcat-3.3.png)
+
+## Test 4
+
+Number of Threads (users): 1000
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-3.4.png)
+![](./md/b-tomcat-3.4.png)
+
+### TOMCAT / POST /api/auth-management/authentication
+
+## Test 1
+
+Number of Threads (users): 100
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-4.1.png)
+![](./md/b-tomcat-4.1.png)
+
+## Test 2
+
+Number of Threads (users): 300
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-4.2.png)
+![](./md/b-tomcat-4.2.png)
+
+## Test 3
+
+Number of Threads (users): 500
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-4.3.png)
+![](./md/b-tomcat-4.3.png)
+
+## Test 4
+
+Number of Threads (users): 1000
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-4.4.png)
+![](./md/b-tomcat-4.4.png)
