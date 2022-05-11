@@ -379,3 +379,49 @@ Loop count: 10
 
 ![](./md/a-tomcat-1.4.png)
 ![](./md/b-tomcat-1.4.png)
+
+### TOMCAT / POST /api/user-management/validate-username
+
+## Test 1
+
+Number of Threads (users): 100
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-2.1.png)
+![](./md/b-tomcat-2.1.png)
+
+## Test 2
+
+Number of Threads (users): 300
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-2.2.png)
+![](./md/b-tomcat-2.2.png)
+
+## Test 3
+
+Number of Threads (users): 500
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-2.3.png)
+![](./md/b-tomcat-2.3.png)
+
+## Test 4
+
+Number of Threads (users): 1000
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-tomcat-2.4.png)
+![](./md/b-tomcat-2.4.png)
