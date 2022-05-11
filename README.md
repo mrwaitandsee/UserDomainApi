@@ -97,6 +97,8 @@ docker run \
 -v $(pwd)/db/postgres-data:/var/lib/postgresql/data \
 --net=commonet \
 --name=postgres \
+--cpuset-cpus='0,1,2' \
+--memory='2048m' \
 postgres:alpine
 ```
 
@@ -125,5 +127,195 @@ docker run \
 -e DB_NAME='user-domain-api' \
 --net=commonet \
 --name=node-app \
+--cpuset-cpus='3' \
+--memory='1024m' \
 node-app:latest
 ```
+
+# Load testing results
+
+## Node
+
+### NODE / POST /api/user-management/registration
+
+## Test 1
+
+Number of Threads (users): 100
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-1.1.png)
+![](./md/b-node-1.1.png)
+
+## Test 2
+
+Number of Threads (users): 300
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-1.2.png)
+![](./md/b-node-1.2.png)
+
+## Test 3
+
+Number of Threads (users): 500
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-1.3.png)
+![](./md/b-node-1.3.png)
+
+## Test 4
+
+Number of Threads (users): 1000
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-1.4.png)
+![](./md/b-node-1.4.png)
+
+### NODE / POST /api/user-management/validate-username
+
+## Test 1
+
+Number of Threads (users): 100
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-2.1.png)
+![](./md/b-node-2.1.png)
+
+## Test 2
+
+Number of Threads (users): 300
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-2.2.png)
+![](./md/b-node-2.2.png)
+
+## Test 3
+
+Number of Threads (users): 500
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-2.3.png)
+![](./md/b-node-2.3.png)
+
+## Test 4
+
+Number of Threads (users): 1000
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-2.4.png)
+![](./md/b-node-2.4.png)
+
+### NODE / POST /api/user-management/login
+
+## Test 1
+
+Number of Threads (users): 100
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-3.1.png)
+![](./md/b-node-3.1.png)
+
+## Test 2
+
+Number of Threads (users): 300
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-3.2.png)
+![](./md/b-node-3.2.png)
+
+## Test 3
+
+Number of Threads (users): 500
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-3.3.png)
+![](./md/b-node-3.3.png)
+
+## Test 4
+
+Number of Threads (users): 1000
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-3.4.png)
+![](./md/b-node-3.4.png)
+
+### NODE / POST /api/auth-management/authentication
+
+## Test 1
+
+Number of Threads (users): 100
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-4.1.png)
+![](./md/b-node-4.1.png)
+
+## Test 2
+
+Number of Threads (users): 300
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-4.2.png)
+![](./md/b-node-4.2.png)
+
+## Test 3
+
+Number of Threads (users): 500
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-4.3.png)
+![](./md/b-node-4.3.png)
+
+## Test 4
+
+Number of Threads (users): 1000
+
+Seconds: 1
+
+Loop count: 10
+
+![](./md/a-node-4.4.png)
+![](./md/b-node-4.4.png)
