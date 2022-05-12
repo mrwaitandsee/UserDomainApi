@@ -144,6 +144,18 @@ docker run \
 tomcat-app:latest
 ```
 
+## Run container with netty-app
+
+```
+docker run \
+-p 5000:5000 \
+--net=commonet \
+--name=netty-app \
+--cpuset-cpus='3' \
+--memory='1024m' \
+netty-app:latest
+```
+
 # Load testing results
 
 ## Node

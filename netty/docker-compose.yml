@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:alpine
+    environment:
+      POSTGRES_DB: "user-domain-api"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "strong-password"
+    volumes:
+      - ../db/initdb:/docker-entrypoint-initdb.d
+      - ../db/postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@pgadmin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+  app:
+    build: ./
+    container_name: app-netty
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres

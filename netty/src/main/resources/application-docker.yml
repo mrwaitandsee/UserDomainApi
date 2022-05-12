@@ -1,0 +1,11 @@
+server:
+  port: 5000
+
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://postgres:5432/user-domain-api
+    username: postgres
+    password: strong-password
+
+jwt:
+  secret: strong-secret
