@@ -12,18 +12,31 @@ import reactor.core.publisher.Mono;
 import java.io.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @RestController
 @RequestMapping("my")
 public class MyController {
     @CrossOrigin({ "*" })
     @GetMapping(value = "test", produces = "application/stream+json")
-    public Flux<Timestamp> test() {
-        return Flux.generate(
-                sink -> sink.next(Timestamp.builder()
-                        .timestamp(LocalDateTime.now())
-                        .build()))
-                .delayElements(Duration.ofSeconds(1))
-                .flatMap(o -> Mono.just((Timestamp) o));
+    public Flux<Object> test() {
+        return Flux
+                .interval(Duration.ofSeconds(1))
+                .flatMap(id -> {
+                    System.out.println(id);
+
+                    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    String timestamp = LocalDateTime.now().format(dateTimeFormatter);
+
+                    System.out.println(timestamp);
+
+                    return Mono.just(Timestamp.builder()
+                            .timestamp(timestamp)
+                            .build());
+                });
+
+//                .generate(sink -> {
+//
+//                });
     }
 }

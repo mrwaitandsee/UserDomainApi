@@ -11,5 +11,5 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 public class Timestamp implements Serializable {
-    private LocalDateTime timestamp;
+    private String timestamp;
 }
