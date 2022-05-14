@@ -1,14 +1,14 @@
 package mrwaitandsee.userdomainapi.controller;
 
 import mrwaitandsee.userdomainapi.dto.*;
+import mrwaitandsee.userdomainapi.entity.UserEntity;
 import mrwaitandsee.userdomainapi.service.UserManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
@@ -21,6 +21,12 @@ public class UserManagementController {
     @Autowired
     public UserManagementController(UserManagementService userManagementService) {
         this.userManagementService = userManagementService;
+    }
+
+    @CrossOrigin({ "*" })
+    @PostMapping(value = "/test", produces = "application/stream+json")
+    public Flux<UserEntity> test() {
+        return userManagementService.test();
     }
 
     @PostMapping("/registration")

@@ -1,5 +1,6 @@
 package mrwaitandsee.userdomainapi.service;
 
+import ch.qos.logback.core.util.FixedDelay;
 import mrwaitandsee.userdomainapi.dto.RegistrationRequestDto;
 import mrwaitandsee.userdomainapi.dto.UserRegistrationResponseDto;
 import mrwaitandsee.userdomainapi.entity.*;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -43,6 +45,22 @@ public class UserManagementService {
         this.r2dbcEntityTemplate = r2dbcEntityTemplate;
     }
 
+    public Flux<UserEntity> test() {
+        return r2dbcEntityTemplate
+                .getDatabaseClient()
+                .sql("SELECT * FROM \"user\"")
+                .fetch()
+                .all()
+                .flatMap(data ->
+                        Mono.just(UserEntity.builder()
+                                .id(UUID.fromString(data.get("id").toString()))
+                                .name(data.get("name").toString())
+                                .password(null)
+                                .build()
+                        )
+                );
+    }
+
     @Transactional
     public Mono<UserRegistrationResponseDto> registration(RegistrationRequestDto dto) {
         return validateUsername(dto.getName()).flatMap(hasUname -> {
@@ -71,7 +89,8 @@ public class UserManagementService {
                     .name(dto.getName())
                     .password(hash)
                     .build();
-            return userRepository.save(newUser).flatMap(userEntity -> {
+            Mono<UserEntity> userEntityMono = userRepository.save(newUser);
+            return userEntityMono.flatMap(userEntity -> {
                 Mono<RoleEntity> roleEntityMono = roleRepository.findUserRole().flatMap(Mono::just);
 
                 return roleEntityMono.flatMap(roleEntity -> {
